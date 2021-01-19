@@ -75,4 +75,28 @@ export default {
   googleAnalytics: {
     id: 'UA-184228195-1',
   },
+
+  render: {
+    csp: {
+      reportOnly: true,
+      hashAlgorithm: 'sha256',
+      policies: {
+        'default-src': ["'self'"],
+        'img-src': ['https:', '*.google-analytics.com'],
+        'worker-src': ["'self'", `blob:`, 'lunie.cosmos.network'],
+        'style-src': ["'self'", "'unsafe-inline'", 'lunie.cosmos.network'],
+        'script-src': [
+          "'self'",
+          "'unsafe-inline'",
+          'lunie.cosmos.network',
+          '*.google-analytics.com',
+        ],
+        'connect-src': ['lunie.cosmos.network', '*.google-analytics.com'],
+        'form-action': ["'self'"],
+        'frame-ancestors': ["'none'"],
+        'object-src': ["'none'"],
+        'base-uri': ['lunie.cosmos.network'],
+      },
+    },
+  },
 }
